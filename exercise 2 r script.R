@@ -1,0 +1,10 @@
+library(dplyr)
+library(tidyr)
+itanic_original_csv_ <- mutate(itanic_original_csv_, embarked = ifelse(is.na(embarked), "S", embarked))
+itanic_original_csv_ <- mutate(itanic_original_csv_, age = ifelse(is.na(age), mean(age,na.rm = TRUE), age))
+itanic_original_csv_ <- mutate(itanic_original_csv_, boat = ifelse(is.na(boat), "NA", boat))
+itanic_original_csv_ <- mutate(itanic_original_csv_, cabin = ifelse(is.na(cabin), "NA", cabin))
+itanic_original_csv_$has_cabin_number  <- ifelse(itanic_original_csv_$has_cabin_number %in% "NA", 0, 1)
+itanic_original_csv_$has_cabin_number <-ifelse(itanic_original_csv_ cabin == "NA",0,1)
+?ifelse
+itanic_original_csv_$has_cabin_number <- ifelse(itanic_original_csv_$cabin %in% "NA", 0, 1)
